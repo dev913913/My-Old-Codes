@@ -63,7 +63,7 @@ int main(){
 
     }
 
-    cout<<"n";
+    cout<<"__________________\n";
     if(c>0)
     {
         cout<<match<<" number found in "<<d<<" tries\n";
