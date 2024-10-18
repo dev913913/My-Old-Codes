@@ -1,0 +1,129 @@
+x=1
+print(type(x))
+list=[1,2,3,4,5]
+print(list)
+2*2
+x=5
+y=10
+print(bool(x==y))
+x="neha"
+print(bool(x))
+a=True
+print(type(a))
+a=5
+for i in range(a):
+    for j in range (i):
+        print('*',end=" ")
+        print()
+a="welcome to my world"
+x=a.upper()
+print(x)
+for i in range(1,10):
+    print(i)
+    if(i==5):
+        break
+    a="neha"
+    print(len(a))
+
+    a="welcome"
+    print(len(a))
+def add(a,b):
+    print(a+b)
+add(10,10)
+x=min(5,10,25)
+y=max(5,10,25)
+print("min",x)
+print("max",y)
+x=abs(-7.25)
+print(x)
+
+x=pow(4,3)
+print(x)
+username=input("enter username")
+print("username is"+username)
+for i in "i am neha":
+    if i=="":
+        continue
+    print("letter",i)
+    def error(errorstatus):
+        match errorstatus:
+         case 400:
+                return"error 400:bad requires "
+         case 404:
+                return"error 404:link not found"
+         case 418:
+                return"eroor 418:server is down"
+                case
+                return"check your internet connection"
+print(error(400))
+print(error(404))
+
+for i in'neha':
+ if i=="t":
+     pass
+print("letter",i)
+if 5>2:
+    pass
+else:
+    print("else part")
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             
+             
+             
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
