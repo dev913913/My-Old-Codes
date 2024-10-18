@@ -13,19 +13,19 @@ int main(){
     int c,d = 0;
 
     cout<<"Enter the size of range: ";
-    while(1)
-    {
+    // while(1)
+    // {
     cin>>len;
 
-    if(len>0)
-    {
-        break;
-    }
-    else{
-        cout<<"Invalid input! Size cannot be zero\n";
-        cout<<"Enter the size of range again: ";
-    }
-    }
+    // if(len>0)
+    // {
+    //     break;
+    // }
+    // else{
+    //     cout<<"Invalid input! Size cannot be zero\n";
+    //     cout<<"Enter the size of range again: ";
+    // }
+    // }
     // Creating arr at run time of len size
 
     arr = new int[len];
