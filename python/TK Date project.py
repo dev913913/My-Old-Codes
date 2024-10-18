@@ -55,7 +55,7 @@ def add_days():
     year = selected_year.get()
     days_to_add = int(days_entry.get())
     
-    df.
+  
     new_date, new_month, new_year = date_adder(date, month, year, days_to_add)
     
     # Display the new date
