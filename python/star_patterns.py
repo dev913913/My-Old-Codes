@@ -1,7 +1,7 @@
 #trying out algorithms that i wrote last day, sunday, on star patterns by figuring out things by myself. some credit goes to Vikas Sir
 
 
-# Square
+# pattern 1: Square 
 
 def square(n,p):
     print("\n[1] Square: \n")
@@ -11,6 +11,8 @@ def square(n,p):
             print(p, end=" ")
         print()
         
+# pattern 2: Rectangle 
+
 def rectangle(l,w,p):
     print("\n[2] Rectangle: \n")
     for i in range (0,l):
@@ -19,7 +21,7 @@ def rectangle(l,w,p):
             print(p, end=" ")
         print("")
         
-# pattern 1: Left Diagonal
+# pattern 3: Left Diagonal
 def left_diagonal(n,p):
     print("\n[3] Left Diagonal: \n")
     for i in range(1,n+1):
@@ -28,7 +30,7 @@ def left_diagonal(n,p):
             print(p, end=" ")
         print("")
 
-# pattern 2: Right Diagonal
+# pattern 4: Right Diagonal
 def right_diagonal(n,p):
     print("\n[4] Right Diagonal: \n")
     for i in range(1,n+1):
@@ -39,7 +41,7 @@ def right_diagonal(n,p):
             print(p, end=" ")
         print("")
 
-# pattern 3: Pyramid
+# pattern 5: Pyramid
 def Pyramid(n,p):
     print("\n[5] Pyramid: \n")
     for i in range(0,n):
@@ -50,7 +52,7 @@ def Pyramid(n,p):
         print("")
 
 
-# pattern 4: Inverse Pyramid
+# pattern 6: Inverse Pyramid
 def inverse_pyramid(n,p):
     max_p = (1 + n*2)-2
     print("\n[6] Inverse Pyramid: \n")
@@ -62,7 +64,7 @@ def inverse_pyramid(n,p):
         print("")
 
 
-# pattern 5: Diamond
+# pattern 7: Diamond
 def Diamond(n,p):
     print("\n[7] Diamond: \n")
     for i in range(0,n):
