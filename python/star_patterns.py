@@ -31,11 +31,12 @@ def Pyramid(n,p):
 
 # pattern 4: Inverse Pyramid
 def inverse_pyramid(n,p):
+    max_p = (1 + n*2)-2
     print("\nInverse Pyramid: \n")
     for i in range(0,n):
-        for j in range(0,i):
+        for j in range(i):
             print(" ", end="")
-        for k in range(0-2,n-(2*i)):    
+        for k in range(max_p-(2*i)):        
             print(p, end="")
         print("")
 
@@ -43,16 +44,17 @@ def inverse_pyramid(n,p):
 # pattern 5: Diamond
 def Diamond(n,p):
     print("\nDiamond: \n")
-    for i in range(0,n+1):
+    for i in range(0,n):
         for j in range(n-i-1):
             print(" ", end="")
         for k in range(0,1+(2*i)):    
             print(p, end="")
         print("")
-    for i in range(0,n):
-        for j in range(0,i):
+    max_p = (1 + n*2)-2
+    for i in range(1,n):
+        for j in range(i):
             print(" ", end="")
-        for k in range(((n+(2*i)),0,-1)):    
+        for k in range(max_p-(2*i)):    
             print(p, end="")
         print("")
 
@@ -80,7 +82,7 @@ while True:
         print("\nInvalid choice. Please enter a number between 0 and 5.")
         continue
 
-    n = int(input("\nEnter the number of rows for the pattern (0 to quit): "))
+    n = int(input(f"\nEnter the size (or 0 to quit): "))
     if n == 0:
         break
     elif n < 0:
@@ -110,8 +112,8 @@ while True:
             inverse_pyramid(n, p)
             
         case 5:
-            n = int(n//2)
-            print(n)
+            # n = int(n//2)
+            # print(n)
             Diamond(n, p)
             
         case _:
