@@ -35,7 +35,7 @@ def inverse_pyramid(n,p):
     for i in range(0,n):
         for j in range(0,i):
             print(" ", end="")
-        for k in range(0-4,n-(2*i)):    
+        for k in range(0-2,n-(2*i)):    
             print(p, end="")
         print("")
 
@@ -43,16 +43,16 @@ def inverse_pyramid(n,p):
 # pattern 5: Diamond
 def Diamond(n,p):
     print("\nDiamond: \n")
-    for i in range(0,n):
+    for i in range(0,n+1):
         for j in range(n-i-1):
             print(" ", end="")
         for k in range(0,1+(2*i)):    
             print(p, end="")
         print("")
-    for i in range(0,n-1):
-        for j in range(0,i+1):
+    for i in range(0,n):
+        for j in range(0,i):
             print(" ", end="")
-        for k in range(0-2,n-(2*i)):    
+        for k in range(((n+(2*i)),0,-1)):    
             print(p, end="")
         print("")
 
@@ -110,6 +110,8 @@ while True:
             inverse_pyramid(n, p)
             
         case 5:
+            n = int(n//2)
+            print(n)
             Diamond(n, p)
             
         case _:
