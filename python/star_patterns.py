@@ -82,87 +82,89 @@ def Diamond(n,p):
         print("")
 
 
-# Main function
+def pattern_creator():
+    while True:
+        print("\nChoose the pattern you want to create: \n")
+        print(" [1] Square")
+        print(" [2] Rectangle")
+        print(" [3] Left Diagonal")
+        print(" [4] Right Diagonal")
+        print(" [5] Pyramid")
+        print(" [6] Inverse Pyramid")
+        print(" [7] Diamond")
+        print(" [0] Quit")
 
-# if "__name__" == "__main__":
-while True:
-    print("\nChoose the pattern you want to create: \n")
-    print(" [1] Square")
-    print(" [2] Rectangle")
-    print(" [3] Left Diagonal")
-    print(" [4] Right Diagonal")
-    print(" [5] Pyramid")
-    print(" [6] Inverse Pyramid")
-    print(" [7] Diamond")
-    print(" [0] Quit")
-
-    choice = int(input("\nEnter your choice (0-5): "))
-    
-    if choice == 0:
-        print("\nExiting the program.")
-        break
-    elif choice == 2:
-        l = int(input("\n Enter the length of the rectangle: "))
-        w = int(input("\n Enter the width of the rectangle: "))
+        choice = int(input("\nEnter your choice (0-5): "))
         
-    elif (choice == 1) or (choice >=3 and choice <= 7):
-        n = int(input(f"\nEnter the size (or 0 to quit): "))
-        if n == 0:
+        if choice == 0:
             print("\nExiting the program.")
             break
-        elif n == 1:
-            print("\nSingle row star pattern: \n")
-            print(p)
-            continue
+        elif choice == 2:
+            l = int(input("\n Enter the length of the rectangle: "))
+            w = int(input("\n Enter the width of the rectangle: "))
+            
+        elif (choice == 1) or (choice >=3 and choice <= 7):
+            n = int(input(f"\nEnter the size (or 0 to quit): "))
+            if n == 0:
+                print("\nExiting the program.")
+                break
+            elif n == 1:
+                print("\nSingle row star pattern: \n")
+                print(p)
+                continue
 
-        elif n < 0:
-            print("\nInvalid input. Please enter a positive number.")
+            elif n < 0:
+                print("\nInvalid input. Please enter a positive number.")
+                continue 
+
+        elif choice > 7:
+                print("\nInvalid choice. Please enter a number between 0 and 5.")
+                continue
+        
+        p = input("\nEnter the pattern symbol: ") 
+    
+        
+        
+    
+
+        
+        
+
+        match choice:
+            case 1:
+                square(n, p)
+            case 2:
+                rectangle(l,w, p)
+                
+            case 3:
+                left_diagonal(n, p)
+            case 4:
+                right_diagonal(n, p)
+                
+            case 5:
+                Pyramid(n, p)
+                
+            case 6:
+                inverse_pyramid(n, p)
+                
+            case 7:
+                # n = int(n//2)
+                # print(n)
+                Diamond(n, p)
+                
+            case _:
+                print("\nInvalid choice. Please enter a number between 0 and 5.")
+                continue
+        
+        ch = input("\nDo you want to try again?Y/N: ")
+        if ch.lower() == "y":
             continue 
-
-    elif choice > 7:
-            print("\nInvalid choice. Please enter a number between 0 and 5.")
-            continue
-       
-    p = input("\nEnter the pattern symbol: ") 
-   
-    
-    
-   
-
-    
-    
-
-    match choice:
-        case 1:
-            square(n, p)
-        case 2:
-            rectangle(l,w, p)
-            
-        case 3:
-            left_diagonal(n, p)
-        case 4:
-            right_diagonal(n, p)
-            
-        case 5:
-            Pyramid(n, p)
-            
-        case 6:
-            inverse_pyramid(n, p)
-            
-        case 7:
-            # n = int(n//2)
-            # print(n)
-            Diamond(n, p)
-            
-        case _:
-            print("\nInvalid choice. Please enter a number between 0 and 5.")
-            continue
-    
-    ch = input("\nDo you want to try again?Y/N: ")
-    if ch.lower() == "y":
-        continue
-    else: break
+        else: break
 
     
 
         
+# Main function
+
+if "__name__" == "__main__":
+    pattern_creator()
