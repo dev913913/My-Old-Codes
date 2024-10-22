@@ -94,7 +94,7 @@ def pattern_creator():
         print(" [7] Diamond")
         print(" [0] Quit")
 
-        choice = int(input("\nEnter your choice (0-5): "))
+        choice = int(input("\nEnter your choice (0-7): "))
         
         if choice == 0:
             print("\nExiting the program.")
@@ -156,7 +156,7 @@ def pattern_creator():
                 print("\nInvalid choice. Please enter a number between 0 and 5.")
                 continue
         
-        ch = input("\nDo you want to try again?Y/N: ")
+        ch = input("\nDo you want to try again? Y/N: ")
         if ch.lower() == "y":
             continue 
         else: break
