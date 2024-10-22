@@ -166,5 +166,5 @@ def pattern_creator():
         
 # Main function
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
     pattern_creator()
