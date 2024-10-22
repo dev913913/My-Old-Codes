@@ -21,11 +21,13 @@ def comp_bat(comp_score, user_score):
             print(f"Computer hit: {comp_hand}")
             print(f"Computer is out at {comp_score}")
             break
+        # elif comp_score > user_score:
+        #     compiler_score += comp_hand
         else:
             comp_score += comp_hand
             print(f"Computer hit: {comp_hand}")
             print(f"But you bowled: {user_hand}")
-            print(f"Comp's current score: {user_score}")
+            print(f"Comp's current score: {comp_score}")
     return comp_score
     
 def user_bat(comp_score, user_score):
@@ -49,14 +51,17 @@ def user_bat(comp_score, user_score):
         
 
 while True: 
-    print("Welcome to the Sasta Cricket Game \n")
-    print("Rules are simple: \n")
-    print("  1. Numbers can be chose only between 0 and 6")
-    print("  2. Bowler has to try match his number with the person batting")
-    print("  3. If the bowler's score matches with the batsmab then batsman is out, otherwise, the unmatched number chsoe by batsman will be added to his score")
-    print("  4. After the numbers are matched, the platyers will change theri postions with each other")
-    print("  5. This time, the new batsman will try to do the same and try to beat the score")
+    print("Welcome to the Sasta Cricket Game!\n")
+    print("Simple Rules:\n")
+    print("  1. Choose numbers between 0 and 6.")
+    print("  2. Bowler tries to match their number with the batsman's.")
+    print("  3. If they match, the batsman is out.")
+    print("  4. If not, the batsman's number adds to their score.")
+    print("  5. Players swap roles after a match.")
+    print("  6. The new batsman tries to beat the previous score.")
+
     ch1 = input("\nEnter 'Y' to continue: ")
+
     if ch1.lower() != "y":
        break
    
@@ -80,18 +85,18 @@ while True:
         print(f"Bowl out Computer before he scores more than {user_score}")
         comp_score = comp_bat(comp_score, user_score)
         if comp_score > user_score:
-            print(f"Hehe! Computer has won with more {comp_score-user_score} runs")
+            print(f"Hehe! Computer has won with extra {comp_score-user_score} runs")
         elif comp_score == user_score:
             print("It's a draw!") 
-        else: print(f"Congratulations! You have won with more {comp_score-user_score} runs")    
+        else: print(f"Congratulations! You have won with extra {user_score-comp_score} runs")    
     else: 
         print(f"Your target is to score more than {comp_score}")
         user_score = user_bat(comp_score, user_score)
         if comp_score > user_score:
-            print(f"Hehe! Computer has won with more {comp_score-user_score} runs")
+            print(f"Hehe! Computer has won with extra {comp_score-user_score} runs")
         elif comp_score == user_score:
             print("It's a draw!") 
-        else: print(f"Congratulations! You have won with more {comp_score-user_score} runs")  
+        else: print(f"Congratulations! You have won with extra {user_score-comp_score} runs")  
 
     
         
