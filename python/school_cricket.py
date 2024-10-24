@@ -14,7 +14,9 @@ def comp_bat(comp_score, user_score):
     while True:
         user_hand = int(input("\nBowl: "))
         while not verify(user_hand):
-            user_hand = int(input("\nBat between only '0' and '6' "))
+            print("\nInvalid Choice! Bat between only '0' and '6' ")
+            user_hand = int(input("Bowl again: "))
+            print("")
             continue
     
         if user_hand == comp_hand :
@@ -32,9 +34,11 @@ def comp_bat(comp_score, user_score):
     
 def user_bat(comp_score, user_score):
     while True:
-        user_hand = int(input("\nBat: "))
+        user_hand = int(input("\nHit: "))
         while not verify(user_hand):
-            user_hand = int(input("\nBat between only '0' and '6' "))
+            print("\nInvalid Choice! Bat between only '0' and '6' ")
+            user_hand = int(input("Bowl again: "))
+            print("")
             continue
             
         comp_hand = rm.randint(1,6)
@@ -46,6 +50,7 @@ def user_bat(comp_score, user_score):
         else:
             user_score += user_hand
             print(f"computer bowled: {comp_hand}")
+            print(f"But you hit: {user_hand}")
             print(f"Your current score: {user_score}")
     return user_score        
         
@@ -96,7 +101,13 @@ while True:
             print(f"Hehe! Computer has won with extra {comp_score-user_score} runs")
         elif comp_score == user_score:
             print("It's a draw!") 
-        else: print(f"Congratulations! You have won with extra {user_score-comp_score} runs")  
+        else: print(f"Congratulations! You have won with extra {user_score-comp_score} runs")
+        
+    ch3 =  input("\nDo you want to play again? (Y/N): ").strip().lower()
+    if ch3!= "y":
+        print("")
+        break
+        
 
     
         
