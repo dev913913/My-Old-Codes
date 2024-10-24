@@ -1,8 +1,5 @@
 import random as rm
 
-# bool verifyn(n):
-#     n == 1
-
 def verify(n):
     if n >=1 and n<=6:
         return True
@@ -14,7 +11,7 @@ def comp_bat(comp_score, user_score):
     while True:
         user_hand = int(input("\nBowl: "))
         while not verify(user_hand):
-            print("\nInvalid Choice! Bat between only '0' and '6' ")
+            print("\nInvalid Choice! Bowl only between '0' and '6' ")
             user_hand = int(input("Bowl again: "))
             print("")
             continue
@@ -36,7 +33,7 @@ def user_bat(comp_score, user_score):
     while True:
         user_hand = int(input("\nHit: "))
         while not verify(user_hand):
-            print("\nInvalid Choice! Bat between only '0' and '6' ")
+            print("\nInvalid Choice! Bowl only between '0' and '6' ")
             user_hand = int(input("Bowl again: "))
             print("")
             continue
