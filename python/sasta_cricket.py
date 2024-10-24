@@ -6,64 +6,64 @@ def verify(n):
     
     
 def comp_bat(comp_score, user_score):
-    comp_hand = rm.randint(1,6)
+    print("\nBowl: ", end = "")
     while True:
+        comp_hand = rm.randint(1,6)
         try:
-            user_hand = int(input("\nBowl: "))
+            user_hand = int(input())
+            
+            while not verify(user_hand):
+                print("\nInvalid Choice! Bowl only between '0' and '6'\n")
+                user_hand = int(input("Bowl again: "))
+                
+        
+            if user_hand == comp_hand :
+                print(f"Computer hit: {comp_hand}")
+                print(f"Computer is out at {comp_score}")
+                break
+            # elif comp_score > user_score:
+            #     compiler_score += comp_hand
+            else:
+                comp_score += comp_hand
+                print(f"Computer hit: {comp_hand}")
+                # print(f"But you bowled: {user_hand}")
+                print(f"Comp's current score: {comp_score}")
+        
         except ValueError:
-            print("\nInvalid input! Please enter an integer.")
-            continue
-        while not verify(user_hand):
-            print("\nInvalid Choice! Bowl only between '0' and '6' ")
-            try:
-                user_hand = int(input("\nBowl again: "))
-            except ValueError:
-                print("\nInvalid input! Please enter an integer.")
-                continue
-            print("")
-            continue
-    
-        if user_hand == comp_hand :
-            print(f"Computer hit: {comp_hand}")
-            print(f"Computer is out at {comp_score}")
-            break
-        # elif comp_score > user_score:
-        #     compiler_score += comp_hand
-        else:
-            comp_score += comp_hand
-            print(f"Computer hit: {comp_hand}")
-            # print(f"But you bowled: {user_hand}")
-            print(f"Comp's current score: {comp_score}")
+            print("\nInvalid input! Please enter an integer.\n")
+            print("Bowl again: ", end = "")
+            
+        else: print("\nBowl: ", end = "")
     return comp_score
     
 def user_bat(comp_score, user_score):
+    print("\nHit: ", end = "")
     while True:
         try:
-            user_hand = int(input("\nHit: "))
-        except ValueError:
-            print("\nInvalid input! Please enter an integer.")
-            continue
-        while not verify(user_hand):
-            print("\nInvalid Choice! Bowl only between '0' and '6' ")
-            try:
-                user_hand = int(input("\nHit again: "))
-            except ValueError:
-                print("\nInvalid input! Please enter an integer.")
-                continue
-            print("")
+            user_hand = int(input())  # Prompt for input once here
+
+            # Validate user input
+            while not verify(user_hand):
+                print("\nInvalid Choice! Bowl only between '0' and '6'\n")
+                user_hand = int(input("Hit again: "))  # Re-prompt the user for input
             
-        comp_hand = rm.randint(1,6)
-    
-        if comp_hand == user_hand:
-            print(f"Computer bowled: {comp_hand}")
-            print(f"You're out at {user_score}")
-            break
-        else:
-            user_score += user_hand
-            print(f"computer bowled: {comp_hand}")
-            # print(f"But you hit: {user_hand}")
-            print(f"Your current score: {user_score}")
-    return user_score        
+            comp_hand = rm.randint(1, 6)
+
+            if comp_hand == user_hand:
+                print(f"Computer bowled: {comp_hand}")
+                print(f"You're out at {user_score}")
+                break
+            else:
+                user_score += user_hand
+                print(f"Computer bowled: {comp_hand}")
+                print(f"Your current score: {user_score}")
+
+        except ValueError:
+            print("\nInvalid input! Please enter an integer.\n")
+            print("Hit again: ", end="")
+            
+        else: print("\nHit: ", end="")    
+    return user_score 
         
 def sastaCricket():
     while True: 
