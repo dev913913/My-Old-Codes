@@ -8,10 +8,18 @@ def verify(n):
 def comp_bat(comp_score, user_score):
     comp_hand = rm.randint(1,6)
     while True:
-        user_hand = int(input("\nBowl: "))
+        try:
+            user_hand = int(input("\nBowl: "))
+        except ValueError:
+            print("\nInvalid input! Please enter an integer.")
+            continue
         while not verify(user_hand):
             print("\nInvalid Choice! Bowl only between '0' and '6' ")
-            user_hand = int(input("Bowl again: "))
+            try:
+                user_hand = int(input("\nBowl again: "))
+            except ValueError:
+                print("\nInvalid input! Please enter an integer.")
+                continue
             print("")
             continue
     
@@ -30,10 +38,18 @@ def comp_bat(comp_score, user_score):
     
 def user_bat(comp_score, user_score):
     while True:
-        user_hand = int(input("\nHit: "))
+        try:
+            user_hand = int(input("\nBowl: "))
+        except ValueError:
+            print("\nInvalid input! Please enter an integer.")
+            continue
         while not verify(user_hand):
             print("\nInvalid Choice! Bowl only between '0' and '6' ")
-            user_hand = int(input("Bowl again: "))
+            try:
+                user_hand = int(input("\nBowl again: "))
+            except ValueError:
+                print("\nInvalid input! Please enter an integer.")
+                continue
             print("")
             continue
             
