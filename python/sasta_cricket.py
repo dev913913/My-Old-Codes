@@ -46,12 +46,11 @@ def user_bat(comp_score, user_score):
         while not verify(user_hand):
             print("\nInvalid Choice! Bowl only between '0' and '6' ")
             try:
-                user_hand = int(input("\nBowl again: "))
+                user_hand = int(input("\nHit again: "))
             except ValueError:
                 print("\nInvalid input! Please enter an integer.")
                 continue
             print("")
-            continue
             
         comp_hand = rm.randint(1,6)
     
@@ -77,9 +76,9 @@ def sastaCricket():
         print("  5. Players swap roles after a match.")
         print("  6. The new batsman tries to beat the previous score.")
 
-        ch1 = input("\nEnter 'Y' to continue: ")
+        ch1 = input("\nEnter 'Y' to continue: ").stip().lower()
 
-        if ch1.lower() != "y":
+        if ch1 != "y":
             break
     
         comp_score = 0
