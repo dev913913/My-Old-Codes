@@ -39,7 +39,7 @@ def comp_bat(comp_score, user_score):
 def user_bat(comp_score, user_score):
     while True:
         try:
-            user_hand = int(input("\nBowl: "))
+            user_hand = int(input("\nHit: "))
         except ValueError:
             print("\nInvalid input! Please enter an integer.")
             continue
@@ -76,7 +76,7 @@ def sastaCricket():
         print("  5. Players swap roles after a match.")
         print("  6. The new batsman tries to beat the previous score.")
 
-        ch1 = input("\nEnter 'Y' to continue: ").stip().lower()
+        ch1 = input("\nEnter 'Y' to continue: ").strip().lower()
 
         if ch1 != "y":
             break
@@ -87,16 +87,20 @@ def sastaCricket():
         print("\nWhat would you like to do first: \n")
         print(" [1] Batting")
         print(" [2] Bowling\n")
-        ch2 = int(input("Enter 1 or 2: "))
-        uf = 0
-        match ch2:
-            case 1:
-                user_score = user_bat(comp_score, user_score)
-                uf += 1    
-            case 2:
-                comp_score = comp_bat(comp_score, user_score) 
-            case _:
-                print("Invalid Choice!")
+        
+        while True:
+            ch2 = input("Enter 1 or 2: ")
+            uf = 0
+            match ch2:
+                case '1':
+                    user_score = user_bat(comp_score, user_score)
+                    uf += 1
+                    break    
+                case '2':
+                    comp_score = comp_bat(comp_score, user_score)
+                    break 
+                case _:
+                    print("\nInvalid Choice!\n")
         if uf > 0:
             print(f"Bowl out Computer before he scores more than {user_score}")
             comp_score = comp_bat(comp_score, user_score)
