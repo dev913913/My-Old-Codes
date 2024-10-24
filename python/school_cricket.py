@@ -28,7 +28,7 @@ def comp_bat(comp_score, user_score):
         else:
             comp_score += comp_hand
             print(f"Computer hit: {comp_hand}")
-            print(f"But you bowled: {user_hand}")
+            # print(f"But you bowled: {user_hand}")
             print(f"Comp's current score: {comp_score}")
     return comp_score
     
@@ -50,7 +50,7 @@ def user_bat(comp_score, user_score):
         else:
             user_score += user_hand
             print(f"computer bowled: {comp_hand}")
-            print(f"But you hit: {user_hand}")
+            # print(f"But you hit: {user_hand}")
             print(f"Your current score: {user_score}")
     return user_score        
         
