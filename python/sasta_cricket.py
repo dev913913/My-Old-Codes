@@ -1,9 +1,8 @@
 import random as rm
 
 def verify(n):
-    if n >=1 and n<=6:
-        return True
-    else: return False
+    return 0 <= n <= 6
+        
     
     
 def comp_bat(comp_score, user_score):
