@@ -79,6 +79,7 @@ def sastaCricket():
         ch1 = input("\nEnter 'Y' to continue: ").strip().lower()
 
         if ch1 != "y":
+            print("Exiting the game... Goodbye! :)")
             break
     
         comp_score = 0
@@ -88,9 +89,9 @@ def sastaCricket():
         print(" [1] Batting")
         print(" [2] Bowling\n")
         
+        uf = 0
         while True:
             ch2 = input("Enter 1 or 2: ")
-            uf = 0
             match ch2:
                 case '1':
                     user_score = user_bat(comp_score, user_score)
@@ -120,8 +121,9 @@ def sastaCricket():
             
         ch3 =  input("\nDo you want to play again? (Y/N): ").strip().lower()
         if ch3!= "y":
-            print("")
+            print("Exiting the game... Goodbye! :)")
             break
+        print("\n\n")
     
 if __name__ == "__main__":
     sastaCricket()
