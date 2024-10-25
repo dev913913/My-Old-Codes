@@ -1,4 +1,12 @@
 import random as rm
+from time import sleep
+
+def print_word_by_word(text, delay=0.07):
+    words = text.split()  # Split the text into words
+    for word in words:
+        print(word, end=' ')  # Print the word followed by a space
+        sleep(delay)  # Wait for the specified delay
+    print("\n")
 
 def verify(n):
     return 0 <= n <= 6
@@ -66,18 +74,26 @@ def user_bat(comp_score, user_score):
     return user_score 
         
 def sastaCricket():
-    while True: 
-        print("Welcome to the Sasta Cricket Game!\n")
-        print("Simple Rules:\n")
-        print("  1. Choose numbers between 0 and 6.")
-        print("  2. Bowler tries to match their number with the batsman's.")
-        print("  3. If they match, the batsman is out.")
-        print("  4. If not, the batsman's number adds to their score.")
-        print("  5. Players swap roles after a match.")
-        print("  6. The new batsman tries to beat the previous score.")
-
+    while True:
+        print()
+        for i in range(3,0,-1):
+            sleep(1)
+            print(i, end="...")
+            
+        sleep(1)
+        
+        print_word_by_word("\nWelcome to the Sasta Cricket Game!")
+        print()
+        print_word_by_word("Simple Rules:")
+        print_word_by_word("1. Choose numbers between 0 and 6.")
+        print_word_by_word("2. Bowler tries to match their number with the batsman's.")
+        print_word_by_word("3. If they match, the batsman is out.")
+        print_word_by_word("4. If not, the batsman's number adds to their score.")
+        print_word_by_word("5. Players swap roles after a match.")
+        print_word_by_word("6. The new batsman tries to beat the previous score.")
+        print()
         ch1 = input("\nEnter 'Y' to continue: ").strip().lower()
-
+         
         if ch1 != "y":
             print("Exiting the game... Goodbye! :)")
             break
@@ -123,7 +139,7 @@ def sastaCricket():
         if ch3!= "y":
             print("Exiting the game... Goodbye! :)")
             break
-        print("\n\n")
+        print("\n")
     
 if __name__ == "__main__":
     sastaCricket()
