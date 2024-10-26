@@ -58,7 +58,7 @@ def compare_score(comp_score, user_score):
 def comp_bat(comp_score, user_score, uf, cf):
     
     if uf == 1:
-        print(f"Bowl out computer before it scores more than '{user_score}'")
+        print(f"\nBowl out computer before it scores: '{user_score+1}' or more runs")
         
     # print("\nComputer's turn")
     print("\n")
@@ -97,6 +97,8 @@ def comp_bat(comp_score, user_score, uf, cf):
                 # print(f"But you bowled: {user_hand}")
                 sleep(1)
                 print(f"Comp's current score: {comp_score}")
+                if uf == 1:
+                    print(f"\nComputer needs {user_score-comp_score+1} more runs to win\n")
         
         except ValueError:
             print("\nInvalid input! Please enter an integer.\n")
@@ -111,7 +113,7 @@ def comp_bat(comp_score, user_score, uf, cf):
 def user_bat(comp_score, user_score, uf, cf):
     
     if cf == 1:
-        print(f"Your target is to score more than '{comp_score}'")
+        print(f"\nYour Target: '{comp_score+1}' or more runs")
     
     
     
@@ -150,6 +152,8 @@ def user_bat(comp_score, user_score, uf, cf):
                 print(f"Computer bowled: {comp_hand}", flush=True)
                 sleep(1)
                 print(f"Your current score: {user_score}", flush=True)
+                if cf == 1:
+                    print(f"\nYou need {comp_score-user_score+1} more runs to win\n")
 
         except ValueError:
             print("\nInvalid input! Please enter an integer.\n")
