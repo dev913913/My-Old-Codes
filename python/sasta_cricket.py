@@ -106,7 +106,10 @@ def comp_bat(comp_score, user_score, uf, cf):
                 if uf == 1:
                     if comp_score  >= user_score +1 :
                         compare_score(comp_score, user_score)
+                        break
                     else: print(f"\nComputer needs {user_score-comp_score+1} more runs to win\n")
+                sleep(2)
+                clear_screen()
         
         except ValueError:
             print("\nInvalid input! Please enter an integer.\n")
@@ -127,6 +130,7 @@ def user_bat(comp_score, user_score, uf, cf):
     
     while True:
         try:
+            
             print()
             print_lbyl("Hit: ")
             user_hand = int(input())  # Prompt for input once here
@@ -160,10 +164,15 @@ def user_bat(comp_score, user_score, uf, cf):
                 print(f"Computer bowled: {comp_hand}", flush=True)
                 sleep(1)
                 print(f"Your current score: {user_score}", flush=True)
+        
                 if cf == 1:
                     if user_score >= comp_score +1 :
                         compare_score(comp_score, user_score)
+                        break
                     else: print(f"\nYou need {comp_score-user_score+1} more runs to win\n")
+                    
+                sleep(2)
+                clear_screen()
 
         except ValueError:
             print("\nInvalid input! Please enter an integer.\n")
@@ -192,6 +201,7 @@ def sastaCricket():
         print("Exiting the game... Goodbye! :)")
         exit(0)
         
+    
     while True:
         comp_score = 0
         user_score = 0
@@ -203,6 +213,7 @@ def sastaCricket():
 
         while True:
             ch2 = input("Enter 1 or 2: ")
+            clear_screen()
             match ch2:
                 case '1':
                     user_bat(comp_score, user_score,1, 0)
