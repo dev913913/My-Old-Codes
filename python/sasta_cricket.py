@@ -77,7 +77,8 @@ def comp_bat(comp_score, user_score, uf, cf):
             while not verify(user_hand):
                 sleep(0.7)
                 fprint("\nInvalid Choice! Bowl only between '0' and '6'\n")
-                user_hand = int(input(f"{print_lbyl("Bowl again: ")}"))
+                print_lbyl("Bowl again: ")
+                user_hand = int(input())
                 
         
             if user_hand == comp_hand :
@@ -139,7 +140,8 @@ def user_bat(comp_score, user_score, uf, cf):
             while not verify(user_hand):
                 sleep(0.7)
                 fprint("\nInvalid Choice! Bowl only between '0' and '6'\n")
-                user_hand = int(input(f"{print_lbyl("Hit again: ")}"))  # Re-prompt the user for input
+                print_lbyl("Hit again: ")
+                user_hand = int(input())  # Re-prompt the user for input
             
             comp_hand = rm.randint(1, 6)
 
