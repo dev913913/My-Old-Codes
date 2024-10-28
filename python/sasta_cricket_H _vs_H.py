@@ -1,117 +1,194 @@
 import random as rm
+from time import sleep
+import sys
+import msvcrt  # For Windows key handling
+import os  # Importing the os module for clearing the screen
 
-def verify(n):
-    if n >=1 and n<=6:
-        return True
-    else: return False
-    
-    
-def user1_bat(user_1_score, user_2_score):
-    user1_hand = rm.randint(1,6)
+def clear_screen():
+    # Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def masked_input(prompt=""):
+    print(prompt, end='', flush=True)  # Print prompt without newline
+    input_chars = []
+
     while True:
-        user_2_hand = int(input("\nBowl: "))
-        while not verify(user_2_hand):
-            user_2_hand = int(input("\nBat between only '0' and '6' "))
-            continue
+        char = msvcrt.getch()  # Read a single character (no echo)
+
+        if char in (b'\r', b'\n'):  # Break on Enter
+            if len(input_chars) == 1:  # Check if we have one character
+                digit = input_chars[0]
+                if digit.isdigit() and 0 <= int(digit) <= 6:  # Validate the input
+                    print()  # Move to the next line
+                    return int(digit)  # Return the integer value
+                else:
+                    print("\nInvalid input! Please enter a single digit between 0 and 6.")
+                    print(prompt, end='', flush=True)  # Re-prompt
+                    input_chars = []  # Clear input
+            else:
+                print("\nInvalid input! Please enter a single digit between 0 and 6.")
+                print(prompt, end='', flush=True)  # Re-prompt
+                input_chars = []  # Clear input
+        elif char == b'\x08':  # Handle backspace (delete character)
+            if input_chars:
+                input_chars.pop()
+                # Move cursor back, overwrite with space, and move back again
+                sys.stdout.write('\b \b')
+                sys.stdout.flush()
+        elif char.isdigit() and len(input_chars) < 1:  # Allow only one digit
+            input_chars.append(char.decode('utf-8'))  # Store the input character
+            print('*', end='', flush=True)  # Print '*' for the character typed
+
+# Example usage
+
+
+
+# # Example usage
+# user_input = get_masked_input("Player 1 Hit: ")
+# print("Input captured:", user_input)  # Display the captured input for confirmation
+
+def print_word_by_word(text, delay=0.07):
+    words = text.split()  # Split the text into words
+    for word in words:
+        print(word, end=' ')  # Print the word followed by a space
+        sleep(delay)  # Wait for the specified delay
+    print("\n")
     
-        if user_2_hand == user1_hand :
-            print(f"'Player 1' hit: {user1_hand}")
-            print(f"'Player 1' is out at {user_1_score}")
-            break
-        else:
-            user_1_score += user1_hand
-            print(f"'Player 1' hit: {user1_hand}")
-            print(f"But you bowled: {user_2_hand}")
-            print(f"'Player 1's current score: {user_1_score}")
-    return user_1_score
+
+def print_lbyl(text, delay=0.05):
+    words = text.split()  # Split the text into words
+    for word in words:
+        for letter in word:
+            print(letter, end='', flush=True)  # Print the word followed by a space
+            sleep(delay)  # Wait for the specified delay
+        print(end=" ", flush=True)
+    print("")
+        
+    return ""
+
+def welcome():
+    print_lbyl("Loading...")
+    for i in range(3,0,-1):
+        sleep(1)
+        print(i, end="...")
+        
+    sleep(1)
     
-def user2_bat(user_1_score, user_2_score):
+    print_word_by_word("Welcome to the Sasta Cricket Game!")
+    print()
+    print_word_by_word("Simple Rules:")
+    print_word_by_word("1. Choose numbers between 0 and 6.")
+    print_word_by_word("2. Bowler tries to match their number with the batsman's.")
+    print_word_by_word("3. If they match, the batsman is out.")
+    print_word_by_word("4. If not, the batsman's number adds to their score.")
+    print_word_by_word("5. Players swap roles after a match.")
+    print_word_by_word("6. The new batsman tries to beat the previous score.")
+    print()
+    
+def compare_score(p1n="Player 1",p2n="Player 2",p1score=0, p2score=0):
+    if p1score > p2score:
+        print(f"\nHehe! {p1n} has won with extra {p1score-p2score} runs")
+    elif p1score == p2score:
+        print(f"\nIt's a draw at :{p1score} runs")  
+    else: print(f"\nHehe! {p2n} has won with extra {p2score-p1score} runs") 
+    
+def match(p1n="Player 1",p2n="Player 2"):
+    player1_score = 0
+    player2_score = 0
+    
+    print("\nMatch 1 Started!")
+    # i = 0
     while True:
-        user_2_hand = int(input("\nBat: "))
-        while not verify(user_2_hand):
-            user_2_hand = int(input("\nBat between only '0' and '6' "))
-            continue
-            
-        user1_hand = rm.randint(1,6)
-    
-        if user1_hand == user_2_hand:
-            print(f"'Player 1' bowled: {user1_hand}")
-            print(f"'Player 2' out at {user_2_score}")
-            break
-        else:
-            user_2_score += user_2_hand
-            print(f"'Player 1' bowled: {user1_hand}")
-            print(f"'Player 2' current score: {user_2_score}")
-    return user_2_score        
+        # if(i>0):
+        #     print(f"\n{p1n}'s current score: '{player1_score}'\n")
+        print("")
+        play1_hand = masked_input(f"{p1n} Hit: ")
+        play2_hand = masked_input(f"{p2n} Bowled: ")
+        print("")
+        print_lbyl(f"\n{p1n} hit: '{play1_hand}'")
+        print_lbyl(f"{p2n} Bowled: '{play2_hand}'")
         
 
-while True: 
-    print("Welcome to the Sasta Cricket Game!\n")
-    print("Simple Rules:\n")
-    print("  1. Choose numbers between 0 and 6.")
-    print("  2. Bowler tries to match their number with the batsman's.")
-    print("  3. If they match, the batsman is out.")
-    print("  4. If not, the batsman's number adds to their score.")
-    print("  5. Players swap roles after a match.")
-    print("  6. The new batsman tries to beat the previous score.")
+        if play1_hand == play2_hand:
+            print("")
+            print_lbyl(f"\n{p1n} is out at '{player1_score}'")
+            break
+        player1_score += play1_hand
+        print("")
+        print_lbyl(f"\n{p1n}'s current score: '{player1_score}'\n")
+        input("Press Enter to continue...")
+        clear_screen()
 
-    ch1 = input("\nEnter 'Y' to continue: ")
 
-    if ch1.lower() != "y":
-       break
-   
-    user_1_score = 0
-    user_2_score = 0
-    
-    print("\nWhat would 'player 1' like to choose: \n")
-    print(" [1] Head")
-    print(" [2] Tail\n")
-    
-    ch2 = int(input("Enter 1 or 2: "))
-   
-    arr = ["Head", "Tail"]
-    
-    h_or_t = rm.randint(1,2)
-    
-    if h_or_t == ch2:
-        print(f"'Player 1' won the toss. It's {arr[h_or_t - 1]}\n")
-        print("\nWhat would 'player 1' like to do first: \n")
-    else: 
-        print(f"'Player 2' won the toss. It's {arr[h_or_t - 1]}\n")
-        print("\nWhat would 'player 2' like to do first: \n")
-     
-    print(" [1] Batting")
-    print(" [2] Bowling\n")   
-    
-    
-    ch2 = int(input("Enter 1 or 2: "))
-
-    uf = 0
-    match ch2:
-        case 1:
-            user_2_score = user2_bat(user_1_score, user_2_score)
-            uf += 1    
-        case 2:
-            user_1_score = user1_bat(user_1_score, user_2_score) 
-        case _:
-            print("Invalid Choice!")
-    if uf > 0:
-        print(f"Bowl out 'player 1' before he scores more than {user_2_score}")
-        user_1_score = user1_bat(user_1_score, user_2_score)
-        if user_1_score > user_2_score:
-            print(f"Hehe! 'player 1' has won with extra {user_1_score-user_2_score} runs")
-        elif user_1_score == user_2_score:
-            print("It's a draw!") 
-        else: print(f"Congratulations! You have won with extra {user_2_score-user_1_score} runs")    
-    else: 
-        print(f"Your target is to score more than {user_1_score}")
-        user_2_score = user2_bat(user_1_score, user_2_score)
-        if user_1_score > user_2_score:
-            print(f"Hehe! 'player 1' has won with extra {user_1_score-user_2_score} runs")
-        elif user_1_score == user_2_score:
-            print("It's a draw!") 
-        else: print(f"Congratulations! You have won with extra {user_2_score-user_1_score} runs")  
+    print(f"\n{p2n}'s Target: '{player1_score +1 }' or more runs to win")
+    input("Press Enter to continue...")
+    clear_screen()
 
     
+    print("\nMatch 2 Started!")  
         
-       
+    while True:
+        print("")
+        play2_hand = masked_input(f"{p2n} Hit: ")
+        play1_hand = masked_input(f"{p1n} Bowled: ")
+        print("")
+
+        print_lbyl(f"\n{p2n} hit: '{play2_hand}'")
+        print_lbyl(f"{p1n} bowled: '{play1_hand}'")
+
+        if play1_hand == play2_hand:
+            print_lbyl(f"\n{p2n} is out at '{player2_score}'")
+            break
+        player2_score += play2_hand
+        print_lbyl(f"\n{p2n}'s current score: '{player2_score}'")
+        if player2_score >= player1_score + 1:
+            compare_score(p1n,p2n,player1_score, player2_score)
+            break
+        else:
+            print(f"\n{p2n} needs at least '{player1_score-player2_score+1}' runs to win\n")
+            input("Press Enter to continue...")
+            clear_screen()
+
+    
+    return
+    
+    
+def name_input():
+    player1_name = input("\nEnter Player 1's Name: ")
+    player2_name = input("Enter Player 2's Name: ")
+    
+    
+    return player1_name, player2_name
+    
+# match()
+def sastaCricket():
+    
+    welcome()
+    
+    
+    ch1 = input("\nEnter 'Y' to continue: ").strip().lower()
+
+      
+    if ch1 != "y":
+        print("Exiting the game... Goodbye! :)")
+        exit(0)
+
+    clear_screen()
+
+    p1name, p2name = name_input()
+
+    while True:
+    
+        clear_screen()
+
+        match(p1name, p2name)
+
+        ch3 =  input("\nDo you want to play again? (Y/N): ").strip().lower()
+        if ch3!= "y":
+            print("Exiting the game... Goodbye! :)")
+            break
+        clear_screen()
+
+if __name__ == "__main__":
+    sastaCricket()
+        

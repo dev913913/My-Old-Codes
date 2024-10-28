@@ -1,6 +1,12 @@
 import random as rm
 from time import sleep
+import os
 
+# Defined a custom clear_screen function for Windows and Unix-based systems
+def clear_screen():
+    # Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
 # Defined a custom print function with flush
 def fprint(*args, delay=0, **kwargs):
     print(*args, **kwargs, flush=True)  # Flush immediately
@@ -98,7 +104,9 @@ def comp_bat(comp_score, user_score, uf, cf):
                 sleep(1)
                 print(f"Comp's current score: {comp_score}")
                 if uf == 1:
-                    print(f"\nComputer needs {user_score-comp_score+1} more runs to win\n")
+                    if comp_score  >= user_score +1 :
+                        compare_score(comp_score, user_score)
+                    else: print(f"\nComputer needs {user_score-comp_score+1} more runs to win\n")
         
         except ValueError:
             print("\nInvalid input! Please enter an integer.\n")
@@ -153,7 +161,9 @@ def user_bat(comp_score, user_score, uf, cf):
                 sleep(1)
                 print(f"Your current score: {user_score}", flush=True)
                 if cf == 1:
-                    print(f"\nYou need {comp_score-user_score+1} more runs to win\n")
+                    if user_score >= comp_score +1 :
+                        compare_score(comp_score, user_score)
+                    else: print(f"\nYou need {comp_score-user_score+1} more runs to win\n")
 
         except ValueError:
             print("\nInvalid input! Please enter an integer.\n")
