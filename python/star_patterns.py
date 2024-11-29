@@ -1,3 +1,11 @@
+import os
+
+# Defined a custom clear_screen function for Windows and Unix-based systems
+def clear_screen():
+    # Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 #trying out algorithms that i wrote last day, sunday, on star patterns by figuring out things by myself. some credit goes to Vikas Sir
 
 
@@ -84,6 +92,7 @@ def Diamond(n,p):
 
 def pattern_creator():
     while True:
+        clear_screen()
         print("\nChoose the pattern you want to create: \n")
         print(" [1] Square")
         print(" [2] Rectangle")
@@ -94,42 +103,62 @@ def pattern_creator():
         print(" [7] Diamond")
         print(" [0] Quit")
 
-        choice = int(input("\nEnter your choice (0-7): "))
-        
+        while(True):
+            try:
+                choice = int(input("\nEnter your choice (0-7): "))
+                if not (0<=choice<=7):
+                    raise ValueError
+                break
+                # else: print("Invalid choice. Please enter a number between 0 and 7.")
+            except  ValueError:
+                print("Invalid choice. Please enter a number between 0 and 7.")     
+         
         if choice == 0:
-            print("\nExiting the program.")
+            print("\nExiting the program. ")
             break
         elif choice == 2:
-            l = int(input("\n Enter the length of the rectangle: "))
-            w = int(input("\n Enter the width of the rectangle: "))
+            while True:
+                try:
+                    l = int(input("\n Enter the length of the rectangle: "))
+                    if l == 0:
+                        print(" Invalid choice. 0 size won't work")
+                    else: break
+                except  ValueError as e:
+                    print(" Enter only integer number as input")
+            
+            while True:
+                try:
+                    w = int(input("\n Enter the width of the rectangle: "))
+                    if w == 0:
+                        print(" Invalid choice. 0 size won't work")
+                    else: break
+                except  ValueError as e:
+                    print(" Enter only integer number as input")
+            
             
         elif (choice == 1) or (choice >=3 and choice <= 7):
-            n = int(input(f"\nEnter the size (or 0 to quit): "))
+            while True:
+                try:
+                    n = int(input(f"\nEnter the size (or 0 to choose another pattern): "))
+                    # if n == 0:
+                    #     raise ValueError
+                    break
+                except  ValueError:
+                    print("Invalid choice. Please enter a number between 0 and 7.")
+
             if n == 0:
-                print("\nExiting the program.")
-                break
-            elif n == 1:
-                print("\nSingle row star pattern: \n")
-                print(p)
                 continue
+                
+            # elif n == 1:
+            #     print("\nSingle row pattern: \n")
+            #     print(p)
+            #     continue
 
-            elif n < 0:
-                print("\nInvalid input. Please enter a positive number.")
-                continue 
-
-        elif choice > 7:
-                print("\nInvalid choice. Please enter a number between 0 and 5.")
-                continue
+    
+    
         
         p = input("\nEnter the pattern symbol: ") 
     
-        
-        
-    
-
-        
-        
-
         match choice:
             case 1:
                 square(n, p)
@@ -152,14 +181,16 @@ def pattern_creator():
                 # print(n)
                 Diamond(n, p)
                 
-            case _:
-                print("\nInvalid choice. Please enter a number between 0 and 5.")
-                continue
+            # case _:
+            #     print("\nInvalid choice. Please enter a number between 0 and 5.")
+            #     continue
         
-        ch = input("\nDo you want to try again? Y/N: ")
+        ch = input("\nDo you want to try again?Y/N: ")
         if ch.lower() == "y":
             continue 
-        else: break
+        else: 
+            print("\nExiting the program.")
+            break
 
     
 
